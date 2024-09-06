@@ -1,0 +1,196 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Reservation Page</title>
+<link rel="stylesheet" type="text/css" href="FormStyles.css">
+
+<script>
+	function ValidateFullName()
+	{
+		let fname=document.getElementById("txtFullName").value;
+		if ((fname == "")||(fname == null))
+			{
+				alert ("Please Enter full name !!");
+				return false;
+			}
+			return true;
+	}
+	
+	function ValidateEmail()
+	{
+		let email = document.getElementById("txtEmail").value
+		let at=email.indexOf("@");
+		let dt=email.lastIndexOf(".");
+		let len=email.length;
+		
+		if ((at<2)||(dt-at<2)||(len-dt<2))
+			{
+				alert("Please enter a valid email address !!!");
+				return false;
+			}
+			return true;
+	}
+	
+	function validatePassword()
+	{
+		let pass = document.getElementById("txtPassword").value;
+		let cpass = document.getElementById("txtConfirmPassword").value;
+		let lenpass = pass.length;
+		
+		if ((lenpass<5)||(pass != cpass))
+			{
+				alert("Password missmatch please check your password");
+				return false;
+			}
+			return true;
+	}
+	
+  function validateNoofpeople()
+  {
+      let numofppl = document.getElementById("txtNumber").value;
+      if (numofppl<=1)
+      {
+        alert("Number of people should be more than one !!");
+        return false;
+      }    
+      return true;
+  }
+
+  function validateTeleponeNumber()
+  {
+    let Tel = document.getElementById("txtContact").value;
+    tellen = Tel.length;
+    if(tellen !=10)
+    {
+      alert("Please enter a valid telephone number");
+      return false;
+    }
+    return true;
+  }
+
+  function valdatelistvalues()
+  {
+    let val = document.getElementById("lstTourType").value;
+    
+    if (val == "")
+    {
+      alert("You cannot leave the tour type feild empty");
+      return false;
+    }
+      return true;
+  }
+
+  function validateRadio()
+  {
+     let rad1 = document.getElementById("rdoOption_0").checked;
+     let rad2 = document.getElementById("rdoOption_1").checked;
+     if (rad1 == false && rad2 == false)
+     {
+        alert("Is this your first reservation ? please select yes or no ")
+        return false;
+     }
+      
+     return true;
+
+  }
+
+  function validateAll()
+	{
+		if(ValidateFullName() && ValidateEmail() && validatePassword() && validateNoofpeople() && validateTeleponeNumber() && valdatelistvalues() && validateRadio())
+			{
+				alert("Reservation Added !!");
+			}
+		else
+			{
+				event.preventDefault();
+			}
+	}
+	
+</script>
+</head>
+
+<body background="10 Gorgeous Places To Stay In Bocas Del Toro, Panama.jpg">
+	<button id="backButton">Go Back</button>
+<form id="form1" name="form1" method="post" action="">
+<table width="478" border="0" align="center">
+  <tr>
+    <td colspan="2"><h1 align="center">RESERVE NOW</h1></td>
+    </tr>
+  <tr>
+    <td width="251">Full Name</td>
+    <td width="217"><label for="txtFullName"></label>
+      <input type="text" name="txtFullName" id="txtFullName" /></td>
+  </tr>
+  <tr>
+    <td>Email Address</td>
+    <td><label for="txtEmail"></label>
+      <input type="text" name="txtEmail" id="txtEmail" /></td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td><label for="txtPassword"></label>
+      <input type="password" name="txtPassword" id="txtPassword" /></td>
+  </tr>
+  <tr>
+    <td>Confrim Password</td>
+    <td><label for="txtConfirmPassword"></label>
+      <input type="password" name="txtConfirmPassword" id="txtConfirmPassword" /></td>
+  </tr>
+  <tr>
+    <td>Date</td>
+    <td><label for="txtDate"></label>
+      <input type="text" name="txtDate" id="txtDate" /></td>
+  </tr>
+  <tr>
+    <td>Number of People</td>
+    <td><label for="txtNumber"></label>
+      <input type="text" name="txtNumber" id="txtNumber" /></td>
+  </tr>
+  <tr>
+    <td>Contact Number</td>
+    <td><label for="txtContact"></label>
+      <input type="text" name="txtContact" id="txtContact" /></td>
+  </tr>
+  <tr>
+    <td>Tour Type</td>
+    <td>
+    <label for="lstTourType"></label>
+      <select name="lstTourType" id="lstTourType">
+		<option value="">-----------Select-----------</option>
+        <option value="One Day Tour">One Day Tour</option>
+        <option value="Two Days Tour">Two Days Tour</option>
+        <option value="Half Day Tour">Half Day Tour</option>
+      </select>
+      </td>
+  </tr>
+  <tr>
+    <td>Is this your first Reservation</td>
+    <td><p>
+      <label>
+        <input type="radio" name="rdoOption" value="Yes" id="rdoOption_0" />
+        Yes</label>
+      <br />
+      <label>
+        <input type="radio" name="rdoOption" value="No" id="rdoOption_1" />
+        No</label>
+      <br />
+    </p></td>
+  </tr>
+  <tr>
+    <td>
+    <input type="checkbox" name="chkEmailMe" id="chkEmailMe" />
+      <label for="chkEmailMe"></label>
+      Email me the latest updates</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="71"><input type="submit" name="btnSubmit" id="btnSubmit" value="Submit" onClick="validateAll()" >     
+         <input type="reset" name="btnReset" id="btnReset" value="Reset" /></td>
+    
+  </tr>
+</table>
+</form>
+	<script src="form1S.js"></script>
+</body>
+</html>
